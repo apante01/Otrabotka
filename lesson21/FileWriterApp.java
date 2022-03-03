@@ -49,10 +49,10 @@ public class FileWriterApp {
                 System.out.println(currentLine);
                 if (currentLine !=null&& !currentLine.isBlank())
                 personList.add(convertStringToPerson(currentLine));
-                 System.out.println(personList);
+                //System.out.println(personList);
             }
 
-            // System.out.println(personList);
+            System.out.println(personList);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -64,7 +64,6 @@ public class FileWriterApp {
     private static Person convertStringToPerson(String currentLine) {
         String[] splitted = currentLine.split(" ");
         Person person = new Person();
-
         for (String s : splitted) {
            getNameAndSet(s,person);
            getAgeAndSet(s,person);
@@ -75,15 +74,14 @@ public class FileWriterApp {
     }
 
     private static void getAgeAndSet(String s, Person p) {
-        if(s!= null && s.contains("Возраст:")){
+        if(s!= null && s.contains("age:")){
             p.setAge(Integer.valueOf(s.split(":")[1]));
         }
     }
 
     private static void getNameAndSet(String s, Person p) {
-        if(s!= null && s.contains("Имя:")){
+        if(s!= null && s.contains("name:")){
             p.setName(s.split(":")[1]);
-
         }
     }
 
